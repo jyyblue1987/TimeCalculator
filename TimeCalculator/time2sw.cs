@@ -44,16 +44,15 @@ namespace TimeCalculator
 
         public override string ToUniversalString()
         {
-            return string.Format(
-            "{0:D2}:{1:D2}:{2:D2}:{3:D3}", Hour, Minute, Second, MilliSeconds);
+            return base.ToUniversalString() + string.Format(
+            ":{0:D3}", MilliSeconds);
         } // end method ToUniversalString
 
         // convert to string in standard-time format (H:MM:SS AM or PM)
         public override string ToString()
         {
-            return string.Format("{0}:{1:D2}:{2:D2} {3} {4:D3}",
-            ((Hour == 0 || Hour == 12) ? 12 : Hour % 12),
-            Minute, Second, (Hour < 12 ? "AM" : "PM"), MilliSeconds);
+            return base.ToString() + string.Format(
+            ":{0:D3}", MilliSeconds);
         } // end method ToString
     }
 }
